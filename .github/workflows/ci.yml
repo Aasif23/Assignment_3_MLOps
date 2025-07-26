@@ -52,4 +52,4 @@ jobs:
       run: |
         docker tag assignment_3:latest ${{ secrets.DOCKER_USERNAME }}/assignment_3:latest
         docker push ${{ secrets.DOCKER_USERNAME }}/assignment_3:latest
-        echo "Docker image has been pushed successfully."
+        echo "Docker image has been pushed successfully"
