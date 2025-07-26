@@ -24,7 +24,6 @@ logging.basicConfig(
 
 
 def load_and_prepare_data():
-    """Loads the California Housing dataset."""
     try:
         logging.info("Loading California Housing dataset...")
         housing = fetch_california_housing()
@@ -68,16 +67,14 @@ def train_model(X, y):
 def save_model(model, test_data):
     try:
         os.makedirs(MODEL_DIR, exist_ok=True)
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-
-        model_path = os.path.join(MODEL_DIR, f"{timestamp}_{MODEL_NAME}")
-        test_path = os.path.join(MODEL_DIR, f"{timestamp}_{TEST_DATA_NAME}")
+        model_path = "models/linear_model.joblib"
+        test_data_path = "models/test_data.joblib"
 
         joblib.dump(model, model_path)
-        joblib.dump(test_data, test_path)
+        joblib.dump(test_data, test_data_path)
 
         logging.info(f"Model saved at {model_path}")
-        logging.info(f"Test data saved at {test_path}")
+        logging.info(f"Test data saved at {test_data_path}")
 
         logging.debug(f"Model coefficients shape: {model.coef_.shape}")
         logging.debug(f"Model intercept: {model.intercept_}")
